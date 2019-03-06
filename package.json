@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run server",
     "ssr": "npm run build:universal && npm run generate:prerender && npm run server",
     "ssr:debug": "ng build --aot=true --output-hashing=all --named-chunks=false --build-optimizer=true  && ng run universal-demo:server:dev && webpack && node server.js",
     "ssr:cw": "ng build --aot=true --output-hashing=all --named-chunks=false --build-optimizer=true --watch",
@@ -17,7 +17,8 @@
     "ssr:universal:build:webpack": "node ./node_modules/npm-delay 20000 && webpack --config webpack.config.js --watch",
     "ssr:universal:build:nodemon": "node ./node_modules/npm-delay 25000 && nodemon --inspect server.js",
     "format:check": "prettier --write --config ./.prettierrc --list-different \"src/{app,environments,styles}/**/*{.ts,.json,.scss}\"",
-    "build": "ng build",
+    "build": "npm run build:ssr",
+    "build:ssr":"npm run build:universal && npm run generate:prerender",
     "build:server": "ng run universal-demo:server:production",
     "build:prod": "ng build --prod",
     "build:universal": "ng build --prod && ng run universal-demo:server:production && webpack --progress --colors",
@@ -29,6 +30,7 @@
     "generate:prerender": "node prerender.js"
   },
   "private": true,
+  "heroku-run-build-script": true,
   "dependencies": {
     "@angular/animations": "7.1.0",
     "@angular/common": "7.1.0",
@@ -88,5 +90,9 @@
     "typescript": "3.1.6",
     "webpack-cli": "3.1.2",
     "webpack-node-externals": "1.7.2"
+  },
+  "engines": {
+    "node": "10.14.2",
+    "npm": "6.4.1"
   }
 }
