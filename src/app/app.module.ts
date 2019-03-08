@@ -19,8 +19,10 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { AppState } from './app.state';
+import { TareaState } from '@app/state/tarea.state'
 import { environment } from 'environments/environment';
 import { UniversalStorage } from '@shared/storage/universal.storage';
+import { from } from 'rxjs';
 
 export function initLanguage(translateService: TranslatesService): Function {
   return (): Promise<any> => translateService.initLanguage();
@@ -38,6 +40,7 @@ export function initLanguage(translateService: TranslatesService): Function {
     SharedModule.forRoot(),
     NgxsModule.forRoot([
       AppState,
+      TareaState,
     ]),
     NgxsLoggerPluginModule.forRoot({
       collapsed: false,

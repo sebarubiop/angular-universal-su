@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   isServer: true,
   // for prerender
+  domain: "/api",
   host: 'http://localhost:4000',
 };

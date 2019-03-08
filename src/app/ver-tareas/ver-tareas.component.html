@@ -1,0 +1,8 @@
+<strong>{{ "back-http.delay" | translate }}</strong>
+<p>Tareas</p>
+<pre *ngIf="( tareaState$ | async); else noResult">
+    {{ tareaState$ | async | json }}
+</pre>
+<ng-template #noResult>
+  <p>{{ "loading" | translate }}...</p>
+</ng-template>

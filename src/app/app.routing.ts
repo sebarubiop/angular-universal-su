@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'static/back',
         loadChildren: './transfer-back/transfer-back.module#TransferBackModule',
       },
+      {
+        path: 'tareas',
+        loadChildren: './ver-tareas/ver-tareas.module#VerTareasModule',
+      },
       { path: '**', loadChildren: './not-found/not-found.module#NotFoundModule' },
     ],
   },

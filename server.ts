@@ -1,5 +1,7 @@
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
+import { router } from './src/server/routes'
+import * as mongoose from 'mongoose';
 
 const domino = require('domino');
 const fs = require('fs');
@@ -7,6 +9,10 @@ const path = require('path');
 const template = fs.readFileSync(path.join(__dirname, '.', 'dist', 'index.html')).toString();
 const win = domino.createWindow(template);
 const files = fs.readdirSync(`${process.cwd()}/dist-server`);
+
+const MONGODB_HOST = process.env.MONGODB_HOST_PROD || 'localhost';
+const MONGODB_PORT = process.env.MONGODB_PORT_PROD || '27017';
+const MONGODB_NAME = process.env.MONGODB_NAME_PROD || 'hazlopormi';
 
 global['window'] = win;
 Object.defineProperty(win.document.body.style, 'transform', {
@@ -88,9 +94,16 @@ app.engine(
   }),
 );
 
+mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_NAME}`)
+  .then(() => {
+    console.log(`Connected to MongoDB ${MONGODB_NAME} on ${MONGODB_HOST}:${MONGODB_PORT} `);
+  })
+  .catch(err => console.error(err));
+
 app.set('view engine', 'html');
 app.set('views', 'src');
 
+app.use('/api', router);
 app.get('*.*', express.static(path.join(__dirname, '.', 'dist')));
 app.get(ROUTES, express.static(path.join(__dirname, '.', 'static')));
 
