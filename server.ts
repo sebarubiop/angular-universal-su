@@ -10,6 +10,8 @@ const template = fs.readFileSync(path.join(__dirname, '.', 'dist', 'index.html')
 const win = domino.createWindow(template);
 const files = fs.readdirSync(`${process.cwd()}/dist-server`);
 
+require('dotenv').config();
+
 const MONGODB_HOST = process.env.MONGODB_HOST_PROD || 'localhost';
 const MONGODB_PORT = process.env.MONGODB_PORT_PROD || '27017';
 const MONGODB_NAME = process.env.MONGODB_NAME_PROD || 'hazlopormi';
