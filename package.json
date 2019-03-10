@@ -17,7 +17,7 @@
     "ssr:universal:build:webpack": "node ./node_modules/npm-delay 20000 && webpack --config webpack.config.js --watch",
     "ssr:universal:build:nodemon": "node ./node_modules/npm-delay 25000 && nodemon --inspect server.js",
     "format:check": "prettier --write --config ./.prettierrc --list-different \"src/{app,environments,styles}/**/*{.ts,.json,.scss}\"",
-    "build": "npm run build:ssr",
+    "build": "npm run build:ssr && npm run generate:prerender",
     "build:ssr": "npm run build:universal && npm run generate:prerender",
     "build:server": "ng run universal-demo:server:production",
     "build:prod": "ng build --prod",

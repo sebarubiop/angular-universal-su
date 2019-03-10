@@ -4,12 +4,14 @@ import { Action } from '@ngxs/store';
 import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../environments/environment'
 
 export class DelayBack {
   static readonly type = '[App] DelayBack';
+  private domain = environment.domain
   constructor() { }
   apply(ctx: StateContext<AppStateModel>, http: TransferHttpService): Observable<any> {
-    return http.get('https://reqres.in/api/users?delay=3').pipe(
+    return http.get('https://partner-7.com/api/tareas').pipe(
       // return http.get('http://localhost:5000/api/simple').pipe(
       map((result) => {
         ctx.patchState(
