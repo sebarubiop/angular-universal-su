@@ -9,9 +9,9 @@ import { environment } from '../environments/environment'
 export class DelayBack {
   static readonly type = '[App] DelayBack';
   private domain = environment.domain
-  constructor() { }
+  constructor(private tareaId: string) { }
   apply(ctx: StateContext<AppStateModel>, http: TransferHttpService): Observable<any> {
-    return http.get('https://partner-7.com/api/tareas').pipe(
+    return http.get(`https://partner-7.com/api/tarea/${this.tareaId}`).pipe(
       // return http.get('http://localhost:5000/api/simple').pipe(
       map((result) => {
         ctx.patchState(

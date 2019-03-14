@@ -3,5 +3,5 @@ export const environment = {
   isServer: true,
   // for prerender
   host: 'http://localhost:4000',
-  domain: "/api",
+  domain: "https://partner-7.com/api",
 };

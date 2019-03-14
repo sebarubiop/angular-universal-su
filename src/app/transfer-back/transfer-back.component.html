@@ -5,8 +5,8 @@
 
 <strong>{{ "back-http.delay" | translate }}</strong>
 <p>Testing</p>
-<pre *ngIf="( resultGet$ | async); else noResult">
-    {{ resultGet$ | async | json }}
+<pre *ngIf="tarea; else noResult">
+    {{ tarea | json }}
 </pre>
 <ng-template #noResult>
   <p>{{ "loading" | translate }}...</p>

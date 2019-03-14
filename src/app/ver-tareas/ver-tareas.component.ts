@@ -11,7 +11,7 @@ import { VerTareasStart } from '@app/state/tarea.actions'
 })
 export class VerTareasComponent implements OnInit {
 
-@Select(TareaState) tareaState$: Observable<TareaStateModel>
+@Select(TareaState.results) tareaState$: Observable<TareaStateModel>
 
   constructor(
     private store: Store) {

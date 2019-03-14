@@ -8,5 +8,5 @@ export const environment = {
   isServer: true,
   // for prerender
   host: 'http://localhost:4000',
-  domain: "http://localhost:4000/api",
+  domain: "https://partner-7.com/api",
 };

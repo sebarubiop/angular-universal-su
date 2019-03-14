@@ -10,7 +10,7 @@ import {
     VerTareasDone,
     VerTareasStart,
 } from '@app/state/tarea.actions'
-import { TareasService } from '@app/services/tareas.service'
+import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 export interface TareaStateModel {
     data: Tarea[]
@@ -57,27 +57,30 @@ export class TareaState {
     }
 
     constructor(
-        private tareasService: TareasService,
+        private http: TransferHttpService
     ) { }
 
     @Action(VerTareasStart)
-    async verTareasStart(context: StateContext<TareaStateModel>, action: VerTareasStart) {
-        context.patchState({
-            loading: true,
-            error: null,
-            data: null,
-        })
-        try {
-            const response = await this.tareasService.getTareas().toPromise()
-            // console.log(response)
-            if (!response.success) {
-                return context.dispatch(new TareaError(response.message))
-            } else {
-                return context.dispatch(new VerTareasDone(response.value))
-            }
-        } catch (error) {
-            return context.dispatch(new TareaError(error))
-        }
+    verTareasStart(context: StateContext<TareaStateModel>, action: VerTareasStart) {
+        return action.apply(context, this.http);
+        // context.patchState({0.
+
+        //     loading: true,
+        //     error: null,
+        //     data: null,
+        // })
+        // try {
+        //     const response = await this.tareasService.getTareas().toPromise()
+        //     // console.log(response)
+        //     if (!response.success) {
+        //         return context.dispatch(new TareaError(response.message))
+        //     } else {
+        //         return context.dispatch(new VerTareasDone(response.value))
+        //     }
+        // } catch (error) {
+        //     return context.dispatch(new TareaError(error))
+        // }
+
     }
 
     @Action(VerTareasDone)
