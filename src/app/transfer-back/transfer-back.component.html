@@ -1,16 +1,11 @@
-<h1>{{ "back-http.title" | translate }}</h1>
-<p>{{ "back-http.text" | translate }}</p>
 
-<hr>
-
-<strong>{{ "back-http.delay" | translate }}</strong>
 <p>Testing</p>
 <pre *ngIf="tarea; else noResult">
     {{ tarea | json }}
 </pre>
 <ng-template #noResult>
-  <p>{{ "loading" | translate }}...</p>
+  <p>"loading" ...</p>
 </ng-template>
 <br />
 <br />
-<strong>{{ "back-http.original-url" | translate }}</strong> {{ baseUrl }}
+<strong>"back-http.original-url"</strong> {{ baseUrl }}

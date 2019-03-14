@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // libs
 import { CookieService, CookieModule } from 'ngx-cookie';
 import { TransferHttpCacheModule } from '@nguniversal/common';
+import { TransferHttpModule } from '@gorniv/ngx-transfer-http';
 // shared
-import { SharedModule } from '@shared/shared.module';
-import { TranslatesService } from '@shared/translates';
+// import { SharedModule } from '@shared/shared.module';
+// import { TranslatesService } from '@shared/translates';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -21,12 +22,12 @@ import { AppComponent } from './app.component';
 import { AppState } from './app.state';
 import { TareaState } from '@app/state/tarea.state'
 import { environment } from 'environments/environment';
-import { UniversalStorage } from '@shared/storage/universal.storage';
+// import { UniversalStorage } from '@shared/storage/universal.storage';
 import { from } from 'rxjs';
 
-export function initLanguage(translateService: TranslatesService): Function {
-  return (): Promise<any> => translateService.initLanguage();
-}
+// export function initLanguage(translateService: TranslatesService): Function {
+//   return (): Promise<any> => translateService.initLanguage();
+// }
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ export function initLanguage(translateService: TranslatesService): Function {
     AppRoutes,
     BrowserAnimationsModule,
     CookieModule.forRoot(),
-    SharedModule.forRoot(),
+    // SharedModule.forRoot(),
+    TransferHttpModule,
     NgxsModule.forRoot([
       AppState,
       TareaState,
@@ -53,8 +55,8 @@ export function initLanguage(translateService: TranslatesService): Function {
   declarations: [AppComponent],
   providers: [
     CookieService,
-    UniversalStorage,
-    { provide: APP_INITIALIZER, useFactory: initLanguage, multi: true, deps: [TranslatesService] },
+    // UniversalStorage,
+    // { provide: APP_INITIALIZER, useFactory: initLanguage, multi: true, deps: [TranslatesService] },
   ],
 })
 export class AppModule {}

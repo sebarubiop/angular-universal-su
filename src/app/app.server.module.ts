@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 // libs
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 // shared
-import { TranslatesServerModule } from '@shared/translates/translates-server';
+// import { TranslatesServerModule } from '@shared/translates/translates-server';
 // components
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
@@ -22,7 +22,7 @@ import { CookieService, CookieBackendService } from 'ngx-cookie';
     ServerTransferStateModule,
     InlineStyleModule,
     ModuleMapLoaderModule,
-    TranslatesServerModule,
+    // TranslatesServerModule,
   ],
   bootstrap: [AppComponent, InlineStyleComponent],
   providers: [

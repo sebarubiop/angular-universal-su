@@ -5,12 +5,6 @@ const routes: Routes = [
   {
     path: '',
     component: NotFoundComponent,
-    data: {
-      meta: {
-        title: 'not-found.title',
-        description: 'not-found.text',
-      },
-    },
   },
 ];
 

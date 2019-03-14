@@ -4,7 +4,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 // libs
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 // shared
-import { TranslatesBrowserModule } from '@shared/translates/translates-browser';
+// import { TranslatesBrowserModule } from '@shared/translates/translates-browser';
 // components
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
@@ -24,7 +24,7 @@ export function getRequest(): any {
   imports: [
     AppModule,
     BrowserTransferStateModule,
-    TranslatesBrowserModule,
+    // TranslatesBrowserModule,
     InlineStyleModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: false }),
   ],

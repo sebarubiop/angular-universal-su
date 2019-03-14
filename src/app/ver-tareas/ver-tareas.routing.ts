@@ -5,12 +5,6 @@ const routes: Routes = [
   {
     path: '',
     component: VerTareasComponent,
-    data: {
-      meta: {
-        title: 'back-http.title',
-        description: 'back-http.text',
-      },
-    },
   },
 ];
 
